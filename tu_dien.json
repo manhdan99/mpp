@@ -1,11 +1,11 @@
 {
-  "mo_ta": "Từ điển ánh xạ C++ <-> M++ (Ngôn ngữ lập trình troll nhất quả đất)",
+  "mo_ta": "Từ điển ánh xạ C++ <-> M++ (Ngôn ngữ lập trình M++)",
   "tac_gia": "M++ Open Source Community",
   "tu_khoa": {
     "manh": "int",
     "dan": "float",
     "manhnguyen": "double",
-    "manhtrum": "char",
+    "dut_bo": "char",
     "chuoi_hihi": "string",
     "dungsai": "bool",
     "trongtron": "void",
@@ -84,7 +84,7 @@
     "manh",
     "dan",
     "manhnguyen",
-    "manhtrum",
+    "dut_bo",
     "chuoi_hihi",
     "dungsai",
     "trongtron",

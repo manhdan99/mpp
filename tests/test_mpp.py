@@ -6,7 +6,7 @@ Kiểm tra:
 2. Dịch chuẩn các từ khóa M++ sang C++.
 3. Cú pháp kết thúc câu nhe; và ha;
 4. Easter egg: không có hihi -> Câm như hến.
-5. Easter egg: manhtrum không phải char -> Cảnh báo vui.
+5. Easter egg: dut_bo không phải char -> Cảnh báo vui.
 6. Xử lý comment ke_chuyen:
 7. Dịch, biên dịch và chạy thật toàn bộ các chương trình mẫu.
 """
@@ -43,7 +43,7 @@ class TestMPlusPlus(unittest.TestCase):
         
         # Các từ khóa tối thiểu theo yêu cầu đề bài
         bat_buoc = [
-            "manh", "dan", "manhnguyen", "manhtrum", "chuoi_hihi", "dungsai",
+            "manh", "dan", "manhnguyen", "dut_bo", "chuoi_hihi", "dungsai",
             "trongtron", "neuma", "khongthi", "khongthi_neuma", "lapdi",
             "lapmai", "lamdi", "chonbua", "truonghop", "thoi", "bolua",
             "tra_ve_haha", "chuan", "sai_roi", "bang_nhom", "cuc_cuc",
@@ -125,31 +125,31 @@ class TestMPlusPlus(unittest.TestCase):
         found_warning = any("Code gì mà câm như hến vậy trời" in w for w in res.warnings)
         self.assertTrue(found_warning, "Chưa kích hoạt Easter egg câm như hến!")
 
-    def test_easter_egg_manhtrum_not_char(self):
-        """Easter Egg 2: Nếu biến manhtrum kiểu không phải ký tự -> Cảnh báo vui"""
+    def test_easter_egg_dut_bo_not_char(self):
+        """Easter Egg 2: Nếu biến dut_bo kiểu không phải ký tự -> Cảnh báo vui"""
         code = """
         manh tran_dau() {
-            manh manhtrum = 100 nhe;
-            hihi << manhtrum;
+            manh dut_bo = 100 nhe;
+            hihi << dut_bo;
             tra_ve_haha 0;
         }
         """
         res = self.transpiler.transpile(code)
-        found_warning = any("Ủa kỳ vậy, manhtrum mà không phải char hả?" in w for w in res.warnings)
-        self.assertTrue(found_warning, "Chưa kích hoạt Easter egg manhtrum không phải char!")
+        found_warning = any("Ủa kỳ vậy, dut_bo mà không phải char hả?" in w for w in res.warnings)
+        self.assertTrue(found_warning, "Chưa kích hoạt Easter egg dut_bo không phải char!")
 
-    def test_manhtrum_as_char_no_warning(self):
-        """Nếu biến manhtrum có kiểu là manhtrum (char) -> KHÔNG cảnh báo"""
+    def test_dut_bo_as_char_no_warning(self):
+        """Nếu biến dut_bo có kiểu là dut_bo (char) -> KHÔNG cảnh báo"""
         code = """
         manh tran_dau() {
-            manhtrum manhtrum = 'A' nhe;
-            hihi << manhtrum;
+            dut_bo dut_bo = 'A' nhe;
+            hihi << dut_bo;
             tra_ve_haha 0;
         }
         """
         res = self.transpiler.transpile(code)
-        found_warning = any("Ủa kỳ vậy, manhtrum mà không phải char hả?" in w for w in res.warnings)
-        self.assertFalse(found_warning, "Lẽ ra không được cảnh báo khi manhtrum là char!")
+        found_warning = any("Ủa kỳ vậy, dut_bo mà không phải char hả?" in w for w in res.warnings)
+        self.assertFalse(found_warning, "Lẽ ra không được cảnh báo khi dut_bo là char!")
 
     def test_syntax_error_missing_main(self):
         """Báo lỗi hài khi thiếu hàm tran_dau (main)"""

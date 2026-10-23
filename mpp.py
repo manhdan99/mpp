@@ -35,9 +35,9 @@ BANNER = f"""{MAU_XANH_DUONG}{MAU_DAM}
 ======================================================================
   __  __     _     _ 
  |  \\/  |   | |   | |
- | \\  / |___| |___| |     NGÔN NGỮ LẬP TRÌNH M++ (Troll++ Edition)
- | |\\/| |___| |___| |     "Cú pháp tấu hài - Tốc độ bàn thờ của C++"
- |_|  |_|   |_|   |_|     Phiên bản 1.0.0
+ | \\  / |___| |___| |     M++ PROGRAMMING LANGUAGE
+ | |\\/| |___| |___| |     High-Performance Vietnamese C++ Transpiler
+ |_|  |_|   |_|   |_|     Version 1.0.0 (C++17 Engine)
 ======================================================================{MAU_RESET}"""
 
 def in_canh_bao(msg: str):

@@ -51,7 +51,7 @@ class Transpiler:
         """
         Kiểm tra cú pháp cơ bản và kích hoạt các tính năng troll (Easter Eggs):
         1. Easter egg: không có dòng hihi nào -> 'Code gì mà câm như hến vậy trời'
-        2. Easter egg: biến manhtrum không phải kiểu ký tự (char) -> cảnh báo vui
+        2. Easter egg: biến dut_bo không phải kiểu ký tự (char) -> cảnh báo
         3. Cú pháp: ngoặc đóng mở không khớp, thiếu tran_dau (main)
         """
         warnings = []
@@ -95,28 +95,28 @@ class Transpiler:
             else:
                 errors.append(f"Dòng {unclosed.line}: Mở ngoặc {bname} cô đơn quá chưa thấy ai đóng lại nè má!")
 
-        # 4. Kiểm tra Easter Egg: biến tên 'manhtrum'
+        # 4. Kiểm tra Easter Egg: biến tên 'dut_bo'
         # Quét các token: nếu gặp kiểu dữ liệu (thuộc type_keywords),
-        # theo sau là biến tên 'manhtrum'
-        manhtrum_declared = False
+        # theo sau là biến tên 'dut_bo'
+        dut_bo_declared = False
         non_whitespace_tokens = [tok for tok in tokens if tok.type not in (TokenType.WHITESPACE, TokenType.NEWLINE, TokenType.COMMENT_SINGLE, TokenType.COMMENT_MULTI, TokenType.COMMENT_KE_CHUYEN)]
         for i in range(len(non_whitespace_tokens) - 1):
             tok = non_whitespace_tokens[i]
             if tok.type == TokenType.IDENTIFIER and tok.value in self.type_keywords:
-                # Xem token tiếp theo có phải con trỏ hoặc tên biến 'manhtrum' không
+                # Xem token tiếp theo có phải con trỏ hoặc tên biến 'dut_bo' không
                 j = i + 1
                 while j < len(non_whitespace_tokens) and non_whitespace_tokens[j].value in ('*', '&', 'const', 'khongdoi'):
                     j += 1
                 if j < len(non_whitespace_tokens):
                     next_tok = non_whitespace_tokens[j]
-                    if next_tok.type == TokenType.IDENTIFIER and next_tok.value == "manhtrum":
-                        manhtrum_declared = True
-                        if tok.value != "manhtrum":
+                    if next_tok.type == TokenType.IDENTIFIER and next_tok.value == "dut_bo":
+                        dut_bo_declared = True
+                        if tok.value != "dut_bo":
                             warnings.append(
-                                f"[M++ CẢNH BÁO TỐI CAO] (Dòng {next_tok.line}): Ủa kỳ vậy, manhtrum mà không phải char hả? Đặt tên kiểu này coi chừng anh Mạnh trùm tới gõ đầu nha!"
+                                f"[M++ CẢNH BÁO] (Dòng {next_tok.line}): Ủa kỳ vậy, dut_bo mà không phải char hả? Đặt tên biến kiểu này coi chừng đút bò thật nha!"
                             )
 
-        return warnings, errors, manhtrum_declared
+        return warnings, errors, dut_bo_declared
 
     def transpile(self, source_code: str) -> TranspileResult:
         """
@@ -128,7 +128,7 @@ class Transpiler:
         tokenizer = Tokenizer(source_code)
         tokens = tokenizer.tokenize()
 
-        warnings, errors, manhtrum_declared = self.check_syntax_and_easter_eggs(tokens)
+        warnings, errors, dut_bo_declared = self.check_syntax_and_easter_eggs(tokens)
         if errors:
             return TranspileResult("", warnings, errors, {"total_tokens": len(tokens)})
 
@@ -185,9 +185,9 @@ class Transpiler:
             if tok.type == TokenType.IDENTIFIER:
                 val = tok.value
 
-                # Trường hợp đặc biệt: 'manhtrum' có thể là kiểu dữ liệu (char) hoặc tên biến!
-                # Nếu người dùng đặt tên biến là 'manhtrum' (ví dụ: manh manhtrum = 10; hoặc manhtrum manhtrum = 'A';)
-                if val == "manhtrum":
+                # Trường hợp đặc biệt: 'dut_bo' có thể là kiểu dữ liệu (char) hoặc tên biến!
+                # Nếu người dùng đặt tên biến là 'dut_bo' (ví dụ: manh dut_bo = 10; hoặc dut_bo dut_bo = 'A';)
+                if val == "dut_bo":
                     # Kiểm tra xem token này là TYPE hay là TÊN BIẾN
                     # 1. Nếu đứng sau một kiểu dữ liệu -> Đây là TÊN BIẾN!
                     prev_non_ws = None
@@ -207,11 +207,11 @@ class Transpiler:
                     is_var = False
                     if prev_non_ws in ("int", "float", "double", "char", "string", "bool", "void", "vector", "*", "&"):
                         is_var = True
-                    elif manhtrum_declared and next_non_ws_tok and next_non_ws_tok.value in ("=", ";", ",", ")", "]", "++", "--", "<<", ">>", "+", "-", "*", "/", "%", "==", "!="):
+                    elif dut_bo_declared and next_non_ws_tok and next_non_ws_tok.value in ("=", ";", ",", ")", "]", "++", "--", "<<", ">>", "+", "-", "*", "/", "%", "==", "!="):
                         is_var = True
 
                     if is_var:
-                        output_parts.append("manhtrum")
+                        output_parts.append("dut_bo")
                         i += 1
                         continue
 

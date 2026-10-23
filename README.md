@@ -8,15 +8,15 @@
   <a href="#-yêu-cầu-hệ-thống"><img src="https://img.shields.io/badge/Compiler-C%2B%2B17%20%2F%20g%2B%2B-00599c?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++17" /></a>
   <a href="#-kiểm-thử-tự-động"><img src="https://img.shields.io/badge/Tests-13%2F13%20Passing-10b981?style=for-the-badge&logo=githubactions&logoColor=white" alt="Tests" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge" alt="License MIT" /></a>
-  <a href="#-tính-năng-troll-độc-quyền"><img src="https://img.shields.io/badge/Troll%20Level-Over%209000-ec4899?style=for-the-badge&logo=target&logoColor=white" alt="Troll Level" /></a>
+  <a href="#-tính-năng-nổi-bật"><img src="https://img.shields.io/badge/Performance-Zero%20Overhead-0ea5e9?style=for-the-badge&logo=speedtest&logoColor=white" alt="Performance" /></a>
 </p>
 
 <h3 align="center">
-  ⚡ Cú pháp tấu hài dân gian • Sức mạnh C++17 nguyên bản • Tốc độ bàn thờ ⚡
+  ⚡ Ngôn ngữ lập trình M++ • Hiệu năng C++17 nguyên bản • Trình biên dịch Transpiler tối ưu ⚡
 </h3>
 
 <p align="center">
-  <b>M++ (M-Plus-Plus)</b> là một ngôn ngữ lập trình độc đáo, kết hợp giữa tốc độ thực thi tối đa của C++ và văn hóa mạng hài hước của Việt Nam. Toàn bộ từ khóa, kiểu dữ liệu, hàm thư viện và cú pháp đều được "troll hóa" nhưng chạy thật 100% nhờ Transpiler chuẩn Lexer!
+  <b>M++ (M-Plus-Plus)</b> là một ngôn ngữ lập trình độc đáo, kết hợp giữa cú pháp tiếng Việt phong cách tự do và tốc độ thực thi tối đa của C++17. M++ được trang bị một <b>Transpiler chuẩn Lexer Tokenizer</b>, tự động chuyển đổi mã nguồn thành C++ chuẩn chỉ và biên dịch trực tiếp sang file thực thi nhị phân thông qua <code>g++</code>.
 </p>
 
 ---
@@ -41,25 +41,25 @@
   <img src="assets/architecture.svg" alt="M++ Architecture Flow" width="100%" />
 </p>
 
-1. **Phân tích từ vựng (Lexer Tokenizer)**: Quét luồng mã nguồn `.m++`, phân tách String literals, Char literals, Comment (`//`, `/* */`, `ke_chuyen:`), Number, Operator và Identifier.
+1. **Phân tích từ vựng (Lexer Tokenizer)**: Quét luồng mã nguồn `.m++`, phân tách rõ ràng String literals, Char literals, Comment (`//`, `/* */`, `ke_chuyen:`), Number, Operator và Identifier.
 2. **Bảo vệ tuyệt đối nội dung chuỗi**: Tokenizer cam kết **không bao giờ thay thế từ khóa** nằm trong chuỗi `""` hoặc comment.
-3. **Bộ chuyển đổi ngữ nghĩa (Transpiler Core)**: Ánh xạ từ khóa theo `tu_dien.json`, chuẩn hóa đuôi câu lệnh `nhe;`/`ha;`, bắt các Easter eggs và kiểm tra cấu trúc ngoặc.
-4. **Biên dịch & Tối ưu (g++ Compiler)**: Gọi `g++ -std=c++17 -O2` để sinh file nhị phân native thực thi trực tiếp với tốc độ tối đa.
-5. **Chửi yêu khi có lỗi**: Tự động chuyển đổi các lỗi khô khan từ compiler thành thông báo tiếng Việt hài hước, chỉ rõ dòng lỗi.
+3. **Bộ chuyển đổi ngữ nghĩa (Transpiler Core)**: Ánh xạ từ khóa theo `tu_dien.json`, chuẩn hóa đuôi câu lệnh `nhe;`/`ha;`, kích hoạt cơ chế chẩn đoán và kiểm tra cấu trúc ngoặc.
+4. **Biên dịch & Tối ưu (g++ Compiler)**: Sử dụng `g++ -std=c++17 -O2` để sinh file nhị phân native thực thi trực tiếp với tốc độ tối đa.
+5. **Chẩn đoán lỗi thông minh**: Tự động chuyển đổi các lỗi cú pháp và lỗi compiler thành thông báo tiếng Việt trực quan, chỉ rõ vị trí dòng code.
 
 ---
 
-## 🎭 Tính Năng Nổi Bật
+## 🚀 Tính Năng Nổi Bật
 
 | Tính Năng | Mô Tả Chi Tiết |
 |---|---|
-| **🛡️ Tokenizer Thực Thụ** | Không dùng regex replace thô. Thoải mái viết `chuoi_hihi s = "manh dan hihi nhe;";` mà không lo vỡ chuỗi. |
-| **💬 Comment `ke_chuyen:`** | Thêm cú pháp comment dòng mới: `ke_chuyen: Hôm nay trời đẹp viết code...` trước khi vào hàm chính. |
-| **🤙 Đuôi Câu Linh Hoạt** | Dấu chấm phẩy `;` vẫn chạy tốt, nhưng hỗ trợ thêm `nhe;` và `ha;` tạo cảm giác thân thiện khi code. |
-| **🐔 Easter Egg "Câm Như Hến"** | Nếu chương trình không hề gọi lệnh xuất `hihi` (cout), trình biên dịch sẽ nhắc nhở yêu thương. |
-| **🥊 Easter Egg "Mạnh Trùm"** | Khai báo biến `manhtrum` với kiểu khác `char` sẽ nhận cảnh báo vui nhộn từ hệ thống. |
-| **🤣 Chế Độ `--cuoi`** | Sau khi chương trình kết thúc, tự động kể một câu chuyện cười giới lập trình viên. |
-| **🤬 Báo Lỗi "Chửi Yêu"** | Lỗi thiếu chấm phẩy, quên đóng ngoặc hay biến lạ được dịch thành ngôn ngữ đời thường dí dỏm. |
+| **🛡️ Tokenizer Chuẩn AST** | Không dùng regex replace chuỗi thô. Thoải mái viết `chuoi_hihi s = "manh dan dut_bo hihi nhe;";` mà không lo bị thay đổi nội dung bên trong chuỗi. |
+| **💬 Comment `ke_chuyen:`** | Hỗ trợ thêm cú pháp comment dòng mới: `ke_chuyen: ...` bên cạnh comment truyền thống `//` và `/* */`. |
+| **🤙 Đuôi Câu Linh Hoạt** | Dấu chấm phẩy `;` chuẩn C++ vẫn hoạt động, đồng thời hỗ trợ thêm đuôi câu `nhe;` và `ha;`. |
+| **🐔 Kiểm Tra Luồng Xuất** | Hệ thống sẽ đưa ra thông báo nhắc nhở nếu chương trình hoàn toàn không có lệnh xuất dữ liệu `hihi` (`cout`). |
+| **🥊 Chẩn Đoán Kiểu Biến** | Khai báo biến `dut_bo` với kiểu dữ liệu khác `char` sẽ nhận thông báo chẩn đoán từ hệ thống. |
+| **🤣 Chế Độ Thư Giãn (`--cuoi`)** | Sau khi chương trình kết thúc, hỗ trợ in một câu đùa lập trình viên giúp thư giãn khi làm việc. |
+| **⚠️ Chẩn Đoán Thân Thiện** | Lỗi thiếu chấm phẩy, quên đóng ngoặc hay biến chưa khai báo được diễn giải rõ ràng, dễ hiểu. |
 
 ---
 
@@ -94,64 +94,64 @@ manh tran_dau() {
 Toàn bộ từ khóa được định nghĩa trong file cấu hình độc lập [`tu_dien.json`](tu_dien.json):
 
 ### 1. Kiểu dữ liệu & Từ khóa cơ bản
-| C++ | M++ | Ý nghĩa / Cách đọc |
+| C++ | M++ | Ý nghĩa / Cách dùng |
 |---|---|---|
-| `int` | `manh` | Số nguyên mạnh mẽ |
-| `float` | `dan` | Số thực đàn em |
-| `double` | `manhnguyen` | Số thực gấp đôi anh Mạnh |
-| `char` | `manhtrum` | Ký tự của anh Mạnh trùm |
-| `string` | `chuoi_hihi` | Chuỗi ký tự vui vẻ |
-| `bool` | `dungsai` | Kiểu đúng sai |
-| `void` | `trongtron` | Hàm trống trơn không trả về |
-| `const` | `khongdoi` | Hằng số không bao giờ đổi |
-| `true` | `chuan` | Chuẩn cơm mẹ nấu |
-| `false` | `sai_roi` | Sai bét tè lè nhè |
-| `nullptr` | `hu_vo` | Hư vô, vô ảnh |
+| `int` | `manh` | Số nguyên (Integer) |
+| `float` | `dan` | Số thực (Float) |
+| `double` | `manhnguyen` | Số thực chính xác kép (Double) |
+| `char` | `dut_bo` | Kiểu ký tự (Character) |
+| `string` | `chuoi_hihi` | Chuỗi ký tự (String) |
+| `bool` | `dungsai` | Kiểu logic đúng/sai (Boolean) |
+| `void` | `trongtron` | Hàm không trả về giá trị (Void) |
+| `const` | `khongdoi` | Hằng số (Const) |
+| `true` | `chuan` | Giá trị đúng (True) |
+| `false` | `sai_roi` | Giá trị sai (False) |
+| `nullptr` | `hu_vo` | Con trỏ rỗng (Nullptr) |
 
 ### 2. Cấu trúc điều khiển & Vòng lặp
-| C++ | M++ | Ý nghĩa / Cách đọc |
+| C++ | M++ | Ý nghĩa / Cách dùng |
 |---|---|---|
-| `if` | `neuma` | Nếu mà như vầy |
-| `else` | `khongthi` | Không thì như kia |
-| `else if` | `khongthi_neuma` | Không thì nếu mà |
-| `for` | `lapdi` | Lặp đi lặp lại |
-| `while` | `lapmai` | Lặp mãi không ngừng |
-| `do` | `lamdi` | Làm đi rồi tính tiếp |
-| `switch` | `chonbua` | Chọn bừa một cái |
-| `case` | `truonghop` | Trong trường hợp này |
-| `break` | `thoi` | Thôi nghỉ, thoát ra |
-| `continue` | `bolua` | Bỏ lụa qua vòng kế tiếp |
-| `return` | `tra_ve_haha` | Trả về kết quả haha |
+| `if` | `neuma` | Rẽ nhánh điều kiện |
+| `else` | `khongthi` | Nhánh phủ định |
+| `else if` | `khongthi_neuma` | Nhánh điều kiện bổ sung |
+| `for` | `lapdi` | Vòng lặp đếm |
+| `while` | `lapmai` | Vòng lặp điều kiện |
+| `do` | `lamdi` | Thực hiện trước khi kiểm tra |
+| `switch` | `chonbua` | Cấu trúc lựa chọn |
+| `case` | `truonghop` | Nhánh trường hợp |
+| `break` | `thoi` | Ngắt vòng lặp/khối lệnh |
+| `continue` | `bolua` | Bỏ qua bước lặp hiện tại |
+| `return` | `tra_ve_haha` | Trả về giá trị của hàm |
 
 ### 3. Hàm, Lớp & Đối tượng
-| C++ | M++ | Ý nghĩa / Cách đọc |
+| C++ | M++ | Ý nghĩa / Cách dùng |
 |---|---|---|
-| `main` | `tran_dau` | Trận đấu chính của chương trình |
-| `class` | `bang_nhom` | Băng nhóm (Class) |
-| `struct` | `cuc_cuc` | Cục dữ liệu gom lại (Struct) |
-| `public` | `congkhai` | Ai cũng thấy |
-| `private` | `bimat` | Giấu kín như bưng |
-| `protected` | `giu_kin` | Giữ kín nội bộ |
-| `new` | `de_moi` | Đẻ mới một đối tượng |
-| `delete` | `xoa_sach` | Xóa sạch sẽ giải phóng RAM |
+| `main` | `tran_dau` | Hàm thực thi chính (Main function) |
+| `class` | `bang_nhom` | Lớp đối tượng (Class) |
+| `struct` | `cuc_cuc` | Cấu trúc dữ liệu (Struct) |
+| `public` | `congkhai` | Phạm vi công khai |
+| `private` | `bimat` | Phạm vi riêng tư |
+| `protected` | `giu_kin` | Phạm vi bảo vệ nội bộ |
+| `new` | `de_moi` | Cấp phát bộ nhớ động |
+| `delete` | `xoa_sach` | Giải phóng bộ nhớ động |
 
 ### 4. Vào / Ra & Thư viện chuẩn (Mở rộng)
-| C++ | M++ | Ý nghĩa / Cách đọc |
+| C++ | M++ | Ý nghĩa / Cách dùng |
 |---|---|---|
-| `cout` | `hihi` | Cười hì hì in ra màn hình |
-| `cin` | `haha` | Cười ha ha hút dữ liệu vào |
-| `endl` | `xuongdong` | Xuống dòng |
-| `#include` | `keu_ban` | Kêu gọi thư viện bạn bè vào |
-| `using namespace std` | `xai_chung` | Xài chung cả lò `std` |
-| `vector` | `hang_dai` | Mảng động co giãn |
-| `size()` | `bao_nhieu` | Đếm số phần tử |
-| `push_back()` | `nhet_vao` | Nhét vào cuối mảng |
-| `pop_back()` | `moc_ra` | Móc phần tử cuối ra |
-| `sqrt()` | `can_bac_hai_ne` | Căn bậc hai |
-| `swap()` | `doi_cho` | Đổi chỗ 2 phần tử |
-| `sort()` | `xep_hang` | Bắt xếp hàng ngay ngắn |
-| `min()` / `max()` | `nho_nhat` / `bu_nhat` | Nhỏ nhất / Bự nhất |
-| `abs()` / `pow()` | `tuyet_doi_nha` / `mu_len` | Tuyệt đối / Lũy thừa |
+| `cout` | `hihi` | Luồng xuất dữ liệu (Output stream) |
+| `cin` | `haha` | Luồng nhập dữ liệu (Input stream) |
+| `endl` | `xuongdong` | Xuống dòng và đẩy bộ đệm |
+| `#include` | `keu_ban` | Nhúng thư viện |
+| `using namespace std` | `xai_chung` | Không gian tên chuẩn |
+| `vector` | `hang_dai` | Mảng động co giãn (Vector) |
+| `size()` | `bao_nhieu` | Số lượng phần tử |
+| `push_back()` | `nhet_vao` | Thêm phần tử vào cuối |
+| `pop_back()` | `moc_ra` | Loại bỏ phần tử cuối |
+| `sqrt()` | `can_bac_hai_ne` | Hàm căn bậc hai |
+| `swap()` | `doi_cho` | Hoán đổi 2 phần tử |
+| `sort()` | `xep_hang` | Sắp xếp mảng / vector |
+| `min()` / `max()` | `nho_nhat` / `bu_nhat` | Tìm giá trị nhỏ nhất / lớn nhất |
+| `abs()` / `pow()` | `tuyet_doi_nha` / `mu_len` | Trị tuyệt đối / Lũy thừa |
 | `begin()` / `end()` | `bat_dau` / `ket_thuc` | Con trỏ đầu / cuối mảng |
 
 ---
@@ -169,7 +169,7 @@ g++ --version
 
 Clone mã nguồn về máy:
 ```bash
-git clone https://github.com/your-username/mpp.git
+git clone https://github.com/manhdan99/mpp.git
 cd mpp
 ```
 
@@ -222,7 +222,7 @@ Thư mục [`vi_du/`](vi_du/) chứa 7 chương trình mẫu từ cơ bản đ�
 | [`04_so_nguyen_to.m++`](vi_du/04_so_nguyen_to.m++) | Sàng lọc số nguyên tố | `can_bac_hai_ne`, `dungsai`, `chuan`, `bolua`, `thoi` |
 | [`05_sap_xep_mang.m++`](vi_du/05_sap_xep_mang.m++) | Sắp xếp mảng / vector | `hang_dai`, `nhet_vao`, `doi_cho`, `xep_hang`, `bat_dau` |
 | [`06_oop_bang_nhom.m++`](vi_du/06_oop_bang_nhom.m++) | Hướng đối tượng OOP | `bang_nhom`, `cuc_cuc`, `congkhai`, `bimat`, `de_moi`, `xoa_sach` |
-| [`07_test_troll.m++`](vi_du/07_test_troll.m++) | Kiểm tra bảo vệ chuỗi | Biến `manhtrum` kích hoạt cảnh báo, chuỗi giữ nguyên từ khóa |
+| [`07_test_troll.m++`](vi_du/07_test_troll.m++) | Kiểm tra bảo vệ chuỗi | Biến `dut_bo` kích hoạt cảnh báo, chuỗi giữ nguyên từ khóa |
 
 ---
 
@@ -236,10 +236,10 @@ python -m unittest tests/test_mpp.py -v
 
 ```
 test_easter_egg_cam_nhu_hen ... ok
-test_easter_egg_manhtrum_not_char ... ok
+test_easter_egg_dut_bo_not_char ... ok
 test_jokes_generation ... ok
 test_ke_chuyen_comment ... ok
-test_manhtrum_as_char_no_warning ... ok
+test_dut_bo_as_char_no_warning ... ok
 test_run_all_samples ... ok
 test_syntax_endings_nhe_and_ha ... ok
 test_syntax_error_missing_main ... ok
@@ -259,15 +259,15 @@ OK (100% Passed)
 
 ## 🤝 Đóng Góp
 
-Mọi đóng góp từ cộng đồng đều được chào đón nồng nhiệt!
+Mọi đóng góp từ cộng đồng đều được chào đón!
 1. Fork dự án
 2. Tạo nhánh tính năng (`git checkout -b feature/tu-khoa-moi`)
 3. Thêm từ khóa vào [`tu_dien.json`](tu_dien.json)
 4. Viết test trong [`tests/test_mpp.py`](tests/test_mpp.py)
-5. Mở Pull Request để cùng tấu hài!
+5. Mở Pull Request!
 
 ---
 
 ## 📜 Giấy Phép
 
-Phát hành dưới giấy phép [MIT License](LICENSE). Tự do học tập, sửa đổi, chia sẻ và lan tỏa tiếng cười!
+Phát hành dưới giấy phép [MIT License](LICENSE). Tự do học tập, sửa đổi và chia sẻ!
