@@ -1,0 +1,38 @@
+keu_ban <iostream>
+xai_chung;
+
+ke_chuyen: Hàm tính tổng từ 1 tới N dùng công thức thần tốc Gauss
+manh tinh_tong_nhanh(manh n) {
+    tra_ve_haha n * (n + 1) / 2 nhe;
+}
+
+manh tran_dau() {
+    manh n = 10 nhe;
+    manh tong_vong_lap = 0 ha;
+
+    hihi << "--- CHUONG TRINH TINH TONG TU 1 TOI N ---" << xuongdong nhe;
+    hihi << "Tinh tong voi N = " << n << xuongdong nhe;
+
+    neuma (n <= 0) {
+        hihi << "N phai duong chu dai ca oi!" << xuongdong nhe;
+        tra_ve_haha 1 nhe;
+    }
+
+    // Dùng vòng lặp lapdi (for) truyền thống
+    lapdi (manh i = 1; i <= n; i++) {
+        tong_vong_lap += i ha;
+    }
+
+    manh tong_cong_thuc = tinh_tong_nhanh(n) nhe;
+
+    hihi << "Tong tinh bang vong lap lapdi: " << tong_vong_lap << xuongdong nhe;
+    hihi << "Tong tinh bang cong thuc nhanh: " << tong_cong_thuc << xuongdong nhe;
+
+    neuma (tong_vong_lap == tong_cong_thuc) {
+        hihi << "Ket qua 2 cach khop nhau 100%, chuan com me nau!" << xuongdong ha;
+    } khongthi {
+        hihi << "Ua sao 2 cach ra khac nhau ta? Ao ma canada vay!" << xuongdong ha;
+    }
+
+    tra_ve_haha 0 nhe;
+}

@@ -1,0 +1,51 @@
+keu_ban <iostream>
+keu_ban <cmath>
+xai_chung;
+
+ke_chuyen: Hàm kiểm tra số nguyên tố chuẩn chỉnh
+dungsai kiem_tra_nguyen_to(manh n) {
+    neuma (n < 2) {
+        tra_ve_haha sai_roi nhe;
+    }
+    khongthi_neuma (n == 2 || n == 3) {
+        tra_ve_haha chuan nhe;
+    }
+    khongthi_neuma (n % 2 == 0 || n % 3 == 0) {
+        tra_ve_haha sai_roi nhe;
+    }
+
+    manh can_n = can_bac_hai_ne(n) nhe;
+    lapdi (manh i = 5; i <= can_n; i += 6) {
+        neuma (n % i == 0 || n % (i + 2) == 0) {
+            tra_ve_haha sai_roi ha;
+        }
+    }
+
+    tra_ve_haha chuan nhe;
+}
+
+manh tran_dau() {
+    hihi << "--- SAN LUNG SO NGUYEN TO TU 1 TOI 50 ---" << xuongdong nhe;
+
+    manh dem_nguyen_to = 0 nhe;
+
+    lapdi (manh num = 1; num <= 50; num++) {
+        neuma (!kiem_tra_nguyen_to(num)) {
+            // Không phải số nguyên tố thì bỏ lụa (continue)
+            bolua ha;
+        }
+
+        hihi << num << " ";
+        dem_nguyen_to++ ha;
+
+        // Nếu tìm được đủ 10 số thì ngưng (thôi)
+        neuma (dem_nguyen_to >= 10) {
+            hihi << "(Du 10 so roi, thoi nghi ngoi!)" << xuongdong nhe;
+            thoi nhe;
+        }
+    }
+
+    hihi << "Tong cong da tom song duoc " << dem_nguyen_to << " chu so nguyen to!" << xuongdong nhe;
+
+    tra_ve_haha 0 nhe;
+}

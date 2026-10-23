@@ -1,0 +1,60 @@
+keu_ban <iostream>
+keu_ban <vector>
+keu_ban <algorithm>
+xai_chung;
+
+ke_chuyen: Thuật toán sắp xếp nổi bọt tự chế dùng 'doi_cho' (swap)
+trongtron sap_xep_noi_bot(hang_dai<manh>& a) {
+    manh n = a.bao_nhieu() nhe;
+    lapdi (manh i = 0; i < n - 1; i++) {
+        lapdi (manh j = 0; j < n - i - 1; j++) {
+            neuma (a[j] > a[j + 1]) {
+                doi_cho(a[j], a[j + 1]) ha;
+            }
+        }
+    }
+}
+
+ke_chuyen: In danh sách mảng
+trongtron in_hang(khongdoi chuoi_hihi& tieu_de, khongdoi hang_dai<manh>& a) {
+    hihi << tieu_de << ": [ ";
+    lapdi (manh i = 0; i < a.bao_nhieu(); i++) {
+        hihi << a[i] << " ";
+    }
+    hihi << "]" << xuongdong nhe;
+}
+
+manh tran_dau() {
+    hihi << "========================================" << xuongdong nhe;
+    hihi << "  DAI HOI XEP HANG MANG VOI M++         " << xuongdong nhe;
+    hihi << "========================================" << xuongdong nhe;
+
+    hang_dai<manh> mang1 nhe;
+    mang1.nhet_vao(64) ha;
+    mang1.nhet_vao(34) ha;
+    mang1.nhet_vao(25) ha;
+    mang1.nhet_vao(12) ha;
+    mang1.nhet_vao(22) ha;
+    mang1.nhet_vao(11) ha;
+    mang1.nhet_vao(90) ha;
+
+    in_hang("Mang ban dau", mang1) nhe;
+
+    // Cách 1: Tự chế sắp xếp nổi bọt
+    sap_xep_noi_bot(mang1) ha;
+    in_hang("Sau khi sap xep noi bot bang 'doi_cho'", mang1) nhe;
+
+    // Cách 2: Sắp xếp bằng std::sort ('xep_hang') cực nhanh
+    hang_dai<manh> mang2 nhe;
+    mang2.nhet_vao(99) ha;
+    mang2.nhet_vao(-5) ha;
+    mang2.nhet_vao(17) ha;
+    mang2.nhet_vao(0) ha;
+    mang2.nhet_vao(42) ha;
+
+    in_hang("Mang thu hai", mang2) nhe;
+    xep_hang(mang2.bat_dau(), mang2.ket_thuc()) ha;
+    in_hang("Sau khi dung 'xep_hang' (std::sort)", mang2) nhe;
+
+    tra_ve_haha 0 nhe;
+}

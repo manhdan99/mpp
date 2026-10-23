@@ -1,0 +1,16 @@
+keu_ban <iostream>
+keu_ban <string>
+xai_chung;
+
+manh tran_dau() {
+    // Biến tên là manhtrum nhưng kiểu là manh (int) -> Sẽ kích hoạt Easter Egg cảnh báo troll!
+    manh manhtrum = 999 nhe;
+
+    // Chuỗi chứa đầy các từ khóa M++ -> Tokenizer thực thụ sẽ giữ nguyên 100%!
+    chuoi_hihi cau_troll = "Chuoi nay chua tu khoa: manh dan chuoi_hihi hihi haha nhe; tran_dau" ha;
+
+    hihi << "Gia tri manhtrum: " << manhtrum << xuongdong nhe;
+    hihi << cau_troll << xuongdong nhe;
+
+    tra_ve_haha 0 nhe;
+}

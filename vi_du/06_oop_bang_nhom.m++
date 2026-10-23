@@ -1,0 +1,52 @@
+keu_ban <iostream>
+keu_ban <string>
+xai_chung;
+
+// Định nghĩa struct cuc_cuc (struct)
+cuc_cuc DiemSo {
+    manh toan ha;
+    manh van ha;
+    dan anh ha;
+};
+
+// Định nghĩa class bang_nhom (class)
+bang_nhom GiangHo {
+bimat:
+    chuoi_hihi biet_danh nhe;
+    manh so_luong_dan_em ha;
+
+congkhai:
+    // Constructor khởi tạo
+    GiangHo(chuoi_hihi ten, manh dan_em) {
+        biet_danh = ten nhe;
+        so_luong_dan_em = dan_em nhe;
+    }
+
+    trongtron gioi_thieu() {
+        hihi << "Tao la: " << biet_danh << ", co " << so_luong_dan_em << " dan em duoi truong!" << xuongdong nhe;
+    }
+
+    trongtron ket_nap_dan_em(manh so_nguoi) {
+        so_luong_dan_em += so_nguoi ha;
+        hihi << biet_danh << " vua ket nap them " << so_nguoi << " anh em!" << xuongdong nhe;
+    }
+};
+
+manh tran_dau() {
+    hihi << "--- THU NGHIEM OOP BANG_NHOM VA CUC_CUC ---" << xuongdong nhe;
+
+    DiemSo d1 = {9, 8, 8.5} nhe;
+    hihi << "Diem thi: Toan=" << d1.toan << ", Van=" << d1.van << ", Anh=" << d1.anh << xuongdong nhe;
+
+    // Dùng de_moi (new) để cấp phát động
+    GiangHo* dai_ka = de_moi GiangHo("Dai Ka Long Dau Gau", 50) nhe;
+    dai_ka->gioi_thieu() ha;
+    dai_ka->ket_nap_dan_em(20) ha;
+    dai_ka->gioi_thieu() ha;
+
+    // Xóa sạch sau khi dùng (delete)
+    xoa_sach dai_ka ha;
+    hihi << "Da xoa sach bang nhom khoi bo nho an toan!" << xuongdong nhe;
+
+    tra_ve_haha 0 nhe;
+}
