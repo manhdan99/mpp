@@ -2,14 +2,14 @@ keu_ban <iostream>
 keu_ban <string>
 xai_chung;
 
-manh tran_dau() {
-    // Biến tên là dut_bo nhưng kiểu là manh (int) -> Sẽ kích hoạt Easter Egg cảnh báo!
-    manh dut_bo = 999 nhe;
+nguyen_con tran_dau() {
+    // Biến tên là cha nhưng kiểu là nguyen_con (int) -> Sẽ kích hoạt Easter Egg cảnh báo!
+    nguyen_con cha = 999 nhe;
 
     // Chuỗi chứa đầy các từ khóa M++ -> Tokenizer thực thụ sẽ giữ nguyên 100%!
-    chuoi_hihi cau_troll = "Chuoi nay chua tu khoa: manh dan dut_bo chuoi_hihi hihi haha nhe; tran_dau" ha;
+    chuoi_hihi cau_troll = "Chuoi nay chua tu khoa: nguyen_con troi_noi gap_doi cha chuoi_hihi hihi haha nhe; tran_dau" ha;
 
-    hihi << "Gia tri dut_bo: " << dut_bo << xuongdong nhe;
+    hihi << "Gia tri cha: " << cha << xuongdong nhe;
     hihi << cau_troll << xuongdong nhe;
 
     tra_ve_haha 0 nhe;

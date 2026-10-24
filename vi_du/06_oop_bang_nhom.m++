@@ -4,20 +4,20 @@ xai_chung;
 
 // Định nghĩa struct cuc_cuc (struct)
 cuc_cuc DiemSo {
-    manh toan ha;
-    manh van ha;
-    dan anh ha;
+    nguyen_con toan ha;
+    nguyen_con van ha;
+    troi_noi anh ha;
 };
 
 // Định nghĩa class bang_nhom (class)
 bang_nhom GiangHo {
 bimat:
     chuoi_hihi biet_danh nhe;
-    manh so_luong_dan_em ha;
+    nguyen_con so_luong_dan_em ha;
 
 congkhai:
     // Constructor khởi tạo
-    GiangHo(chuoi_hihi ten, manh dan_em) {
+    GiangHo(chuoi_hihi ten, nguyen_con dan_em) {
         biet_danh = ten nhe;
         so_luong_dan_em = dan_em nhe;
     }
@@ -26,13 +26,13 @@ congkhai:
         hihi << "Tao la: " << biet_danh << ", co " << so_luong_dan_em << " dan em duoi truong!" << xuongdong nhe;
     }
 
-    trongtron ket_nap_dan_em(manh so_nguoi) {
+    trongtron ket_nap_dan_em(nguyen_con so_nguoi) {
         so_luong_dan_em += so_nguoi ha;
         hihi << biet_danh << " vua ket nap them " << so_nguoi << " anh em!" << xuongdong nhe;
     }
 };
 
-manh tran_dau() {
+nguyen_con tran_dau() {
     hihi << "--- THU NGHIEM OOP BANG_NHOM VA CUC_CUC ---" << xuongdong nhe;
 
     DiemSo d1 = {9, 8, 8.5} nhe;

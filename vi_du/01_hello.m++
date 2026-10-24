@@ -4,7 +4,7 @@ xai_chung;
 // Đây là comment truyền thống nè bà con
 ke_chuyen: Ngày xửa ngày xưa, có một anh chàng dev thử code M++ và nghiện luôn!
 
-manh tran_dau() {
+nguyen_con tran_dau() {
     hihi << "============================================" << xuongdong nhe;
     hihi << " Xin chao the gioi! Day la ngon ngu M++! " << xuongdong nhe;
     hihi << " Code bang M++ vua chay nhanh vua cuoi te ghe! " << xuongdong ha;

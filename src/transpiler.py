@@ -51,7 +51,7 @@ class Transpiler:
         """
         Kiểm tra cú pháp cơ bản và kích hoạt các tính năng troll (Easter Eggs):
         1. Easter egg: không có dòng hihi nào -> 'Code gì mà câm như hến vậy trời'
-        2. Easter egg: biến dut_bo không phải kiểu ký tự (char) -> cảnh báo
+        2. Easter egg: biến cha không phải kiểu ký tự (char) -> cảnh báo
         3. Cú pháp: ngoặc đóng mở không khớp, thiếu tran_dau (main)
         """
         warnings = []
@@ -95,28 +95,28 @@ class Transpiler:
             else:
                 errors.append(f"Dòng {unclosed.line}: Mở ngoặc {bname} cô đơn quá chưa thấy ai đóng lại nè má!")
 
-        # 4. Kiểm tra Easter Egg: biến tên 'dut_bo'
+        # 4. Kiểm tra Easter Egg: biến tên 'cha'
         # Quét các token: nếu gặp kiểu dữ liệu (thuộc type_keywords),
-        # theo sau là biến tên 'dut_bo'
-        dut_bo_declared = False
+        # theo sau là biến tên 'cha'
+        cha_declared = False
         non_whitespace_tokens = [tok for tok in tokens if tok.type not in (TokenType.WHITESPACE, TokenType.NEWLINE, TokenType.COMMENT_SINGLE, TokenType.COMMENT_MULTI, TokenType.COMMENT_KE_CHUYEN)]
         for i in range(len(non_whitespace_tokens) - 1):
             tok = non_whitespace_tokens[i]
             if tok.type == TokenType.IDENTIFIER and tok.value in self.type_keywords:
-                # Xem token tiếp theo có phải con trỏ hoặc tên biến 'dut_bo' không
+                # Xem token tiếp theo có phải con trỏ hoặc tên biến 'cha' không
                 j = i + 1
                 while j < len(non_whitespace_tokens) and non_whitespace_tokens[j].value in ('*', '&', 'const', 'khongdoi'):
                     j += 1
                 if j < len(non_whitespace_tokens):
                     next_tok = non_whitespace_tokens[j]
-                    if next_tok.type == TokenType.IDENTIFIER and next_tok.value == "dut_bo":
-                        dut_bo_declared = True
-                        if tok.value != "dut_bo":
+                    if next_tok.type == TokenType.IDENTIFIER and next_tok.value == "cha":
+                        cha_declared = True
+                        if tok.value != "cha":
                             warnings.append(
-                                f"[M++ CẢNH BÁO] (Dòng {next_tok.line}): Ủa kỳ vậy, dut_bo mà không phải char hả? Đặt tên biến kiểu này coi chừng đút bò thật nha!"
+                                f"[M++ CẢNH BÁO] (Dòng {next_tok.line}): Ủa kỳ vậy, đặt tên biến là 'cha' mà kiểu không phải 'cha' (char) hả? Tính làm cha thiên hạ hay gì?"
                             )
 
-        return warnings, errors, dut_bo_declared
+        return warnings, errors, cha_declared
 
     def transpile(self, source_code: str) -> TranspileResult:
         """
@@ -128,7 +128,7 @@ class Transpiler:
         tokenizer = Tokenizer(source_code)
         tokens = tokenizer.tokenize()
 
-        warnings, errors, dut_bo_declared = self.check_syntax_and_easter_eggs(tokens)
+        warnings, errors, cha_declared = self.check_syntax_and_easter_eggs(tokens)
         if errors:
             return TranspileResult("", warnings, errors, {"total_tokens": len(tokens)})
 
@@ -185,9 +185,9 @@ class Transpiler:
             if tok.type == TokenType.IDENTIFIER:
                 val = tok.value
 
-                # Trường hợp đặc biệt: 'dut_bo' có thể là kiểu dữ liệu (char) hoặc tên biến!
-                # Nếu người dùng đặt tên biến là 'dut_bo' (ví dụ: manh dut_bo = 10; hoặc dut_bo dut_bo = 'A';)
-                if val == "dut_bo":
+                # Trường hợp đặc biệt: 'cha' có thể là kiểu dữ liệu (char) hoặc tên biến!
+                # Nếu người dùng đặt tên biến là 'cha' (ví dụ: nguyen_con cha = 10; hoặc cha cha = 'A';)
+                if val == "cha":
                     # Kiểm tra xem token này là TYPE hay là TÊN BIẾN
                     # 1. Nếu đứng sau một kiểu dữ liệu -> Đây là TÊN BIẾN!
                     prev_non_ws = None
@@ -207,11 +207,11 @@ class Transpiler:
                     is_var = False
                     if prev_non_ws in ("int", "float", "double", "char", "string", "bool", "void", "vector", "*", "&"):
                         is_var = True
-                    elif dut_bo_declared and next_non_ws_tok and next_non_ws_tok.value in ("=", ";", ",", ")", "]", "++", "--", "<<", ">>", "+", "-", "*", "/", "%", "==", "!="):
+                    elif cha_declared and next_non_ws_tok and next_non_ws_tok.value in ("=", ";", ",", ")", "]", "++", "--", "<<", ">>", "+", "-", "*", "/", "%", "==", "!="):
                         is_var = True
 
                     if is_var:
-                        output_parts.append("dut_bo")
+                        output_parts.append("cha")
                         i += 1
                         continue
 

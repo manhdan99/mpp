@@ -3,7 +3,7 @@ keu_ban <cmath>
 xai_chung;
 
 ke_chuyen: Hàm kiểm tra số nguyên tố chuẩn chỉnh
-dungsai kiem_tra_nguyen_to(manh n) {
+dungsai kiem_tra_nguyen_to(nguyen_con n) {
     neuma (n < 2) {
         tra_ve_haha sai_roi nhe;
     }
@@ -14,8 +14,8 @@ dungsai kiem_tra_nguyen_to(manh n) {
         tra_ve_haha sai_roi nhe;
     }
 
-    manh can_n = can_bac_hai_ne(n) nhe;
-    lapdi (manh i = 5; i <= can_n; i += 6) {
+    nguyen_con can_n = can_bac_hai_ne(n) nhe;
+    lapdi (nguyen_con i = 5; i <= can_n; i += 6) {
         neuma (n % i == 0 || n % (i + 2) == 0) {
             tra_ve_haha sai_roi ha;
         }
@@ -24,12 +24,12 @@ dungsai kiem_tra_nguyen_to(manh n) {
     tra_ve_haha chuan nhe;
 }
 
-manh tran_dau() {
+nguyen_con tran_dau() {
     hihi << "--- SAN LUNG SO NGUYEN TO TU 1 TOI 50 ---" << xuongdong nhe;
 
-    manh dem_nguyen_to = 0 nhe;
+    nguyen_con dem_nguyen_to = 0 nhe;
 
-    lapdi (manh num = 1; num <= 50; num++) {
+    lapdi (nguyen_con num = 1; num <= 50; num++) {
         neuma (!kiem_tra_nguyen_to(num)) {
             // Không phải số nguyên tố thì bỏ lụa (continue)
             bolua ha;

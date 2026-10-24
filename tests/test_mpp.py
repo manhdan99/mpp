@@ -6,7 +6,7 @@ Kiểm tra:
 2. Dịch chuẩn các từ khóa M++ sang C++.
 3. Cú pháp kết thúc câu nhe; và ha;
 4. Easter egg: không có hihi -> Câm như hến.
-5. Easter egg: dut_bo không phải char -> Cảnh báo vui.
+5. Easter egg: cha không phải char -> Cảnh báo vui.
 6. Xử lý comment ke_chuyen:
 7. Dịch, biên dịch và chạy thật toàn bộ các chương trình mẫu.
 """
@@ -43,7 +43,7 @@ class TestMPlusPlus(unittest.TestCase):
         
         # Các từ khóa tối thiểu theo yêu cầu đề bài
         bat_buoc = [
-            "manh", "dan", "manhnguyen", "dut_bo", "chuoi_hihi", "dungsai",
+            "nguyen_con", "troi_noi", "gap_doi", "cha", "chuoi_hihi", "dungsai",
             "trongtron", "neuma", "khongthi", "khongthi_neuma", "lapdi",
             "lapmai", "lamdi", "chonbua", "truonghop", "thoi", "bolua",
             "tra_ve_haha", "chuan", "sai_roi", "bang_nhom", "cuc_cuc",
@@ -58,50 +58,50 @@ class TestMPlusPlus(unittest.TestCase):
 
     def test_tokenizer_preserves_strings(self):
         """Kiểm tra tokenizer TUYỆT ĐỐI KHÔNG thay thế từ khóa nằm trong String"""
-        code = 'chuoi_hihi s = "manh dan manhnguyen tran_dau hihi haha nhe; xai_chung";'
-        res = self.transpiler.transpile(f"manh tran_dau() {{ {code} tra_ve_haha 0; }}")
+        code = 'chuoi_hihi s = "nguyen_con troi_noi gap_doi tran_dau hihi haha nhe; xai_chung";'
+        res = self.transpiler.transpile(f"nguyen_con tran_dau() {{ {code} tra_ve_haha 0; }}")
         
-        expected_str = '"manh dan manhnguyen tran_dau hihi haha nhe; xai_chung"'
+        expected_str = '"nguyen_con troi_noi gap_doi tran_dau hihi haha nhe; xai_chung"'
         self.assertIn(expected_str, res.cpp_code, "Từ khóa trong chuỗi đã bị thay thế sai trái!")
 
     def test_tokenizer_preserves_escaped_strings(self):
         """Kiểm tra chuỗi chứa dấu nháy kép escape: \\\" """
-        code = r'chuoi_hihi s = "Day la \"manh\" va \"tran_dau\" nhe;";'
-        res = self.transpiler.transpile(f"manh tran_dau() {{ {code} hihi << s; tra_ve_haha 0; }}")
-        self.assertIn(r'"Day la \"manh\" va \"tran_dau\" nhe;"', res.cpp_code)
+        code = r'chuoi_hihi s = "Day la \"nguyen_con\" va \"tran_dau\" nhe;";'
+        res = self.transpiler.transpile(f"nguyen_con tran_dau() {{ {code} hihi << s; tra_ve_haha 0; }}")
+        self.assertIn(r'"Day la \"nguyen_con\" va \"tran_dau\" nhe;"', res.cpp_code)
 
     def test_tokenizer_preserves_comments(self):
         """Kiểm tra từ khóa trong comment không bị dịch"""
         code = """
-        // manh tran_dau hihi nhe;
-        /* dan chuoi_hihi xai_chung */
-        manh tran_dau() {
+        // nguyen_con tran_dau hihi nhe;
+        /* troi_noi chuoi_hihi xai_chung */
+        nguyen_con tran_dau() {
             hihi << "ok";
             tra_ve_haha 0;
         }
         """
         res = self.transpiler.transpile(code)
-        self.assertIn("// manh tran_dau hihi nhe;", res.cpp_code)
-        self.assertIn("/* dan chuoi_hihi xai_chung */", res.cpp_code)
+        self.assertIn("// nguyen_con tran_dau hihi nhe;", res.cpp_code)
+        self.assertIn("/* troi_noi chuoi_hihi xai_chung */", res.cpp_code)
 
     def test_ke_chuyen_comment(self):
         """Kiểm tra comment kiểu ke_chuyen: ... được chuyển thành // ke_chuyen: ..."""
         code = """
-        ke_chuyen: Ngay xua co anh manh dep trai tran_dau
-        manh tran_dau() {
+        ke_chuyen: Ngay xua co nguoi code M++ rat vui tran_dau
+        nguyen_con tran_dau() {
             hihi << 1;
             tra_ve_haha 0;
         }
         """
         res = self.transpiler.transpile(code)
-        self.assertIn("// ke_chuyen: Ngay xua co anh manh dep trai tran_dau", res.cpp_code)
+        self.assertIn("// ke_chuyen: Ngay xua co nguoi code M++ rat vui tran_dau", res.cpp_code)
 
     def test_syntax_endings_nhe_and_ha(self):
         """Kiểm tra cú pháp kết thúc câu lệnh bằng nhe; và ha;"""
         code = """
-        manh tran_dau() {
-            manh a = 10 nhe;
-            manh b = 20 ha;
+        nguyen_con tran_dau() {
+            nguyen_con a = 10 nhe;
+            nguyen_con b = 20 ha;
             hihi << (a + b) nhe;
             tra_ve_haha 0 ha;
         }
@@ -116,8 +116,8 @@ class TestMPlusPlus(unittest.TestCase):
     def test_easter_egg_cam_nhu_hen(self):
         """Easter Egg 1: Nếu không có dòng hihi nào, cảnh báo 'Code gì mà câm như hến vậy trời'"""
         code = """
-        manh tran_dau() {
-            manh a = 10 nhe;
+        nguyen_con tran_dau() {
+            nguyen_con a = 10 nhe;
             tra_ve_haha a;
         }
         """
@@ -125,36 +125,36 @@ class TestMPlusPlus(unittest.TestCase):
         found_warning = any("Code gì mà câm như hến vậy trời" in w for w in res.warnings)
         self.assertTrue(found_warning, "Chưa kích hoạt Easter egg câm như hến!")
 
-    def test_easter_egg_dut_bo_not_char(self):
-        """Easter Egg 2: Nếu biến dut_bo kiểu không phải ký tự -> Cảnh báo vui"""
+    def test_easter_egg_cha_not_char(self):
+        """Easter Egg 2: Nếu biến cha kiểu không phải ký tự -> Cảnh báo vui"""
         code = """
-        manh tran_dau() {
-            manh dut_bo = 100 nhe;
-            hihi << dut_bo;
+        nguyen_con tran_dau() {
+            nguyen_con cha = 100 nhe;
+            hihi << cha;
             tra_ve_haha 0;
         }
         """
         res = self.transpiler.transpile(code)
-        found_warning = any("Ủa kỳ vậy, dut_bo mà không phải char hả?" in w for w in res.warnings)
-        self.assertTrue(found_warning, "Chưa kích hoạt Easter egg dut_bo không phải char!")
+        found_warning = any("Tính làm cha thiên hạ hay gì?" in w for w in res.warnings)
+        self.assertTrue(found_warning, "Chưa kích hoạt Easter egg cha không phải char!")
 
-    def test_dut_bo_as_char_no_warning(self):
-        """Nếu biến dut_bo có kiểu là dut_bo (char) -> KHÔNG cảnh báo"""
+    def test_cha_as_char_no_warning(self):
+        """Nếu biến cha có kiểu là cha (char) -> KHÔNG cảnh báo"""
         code = """
-        manh tran_dau() {
-            dut_bo dut_bo = 'A' nhe;
-            hihi << dut_bo;
+        nguyen_con tran_dau() {
+            cha cha = 'A' nhe;
+            hihi << cha;
             tra_ve_haha 0;
         }
         """
         res = self.transpiler.transpile(code)
-        found_warning = any("Ủa kỳ vậy, dut_bo mà không phải char hả?" in w for w in res.warnings)
-        self.assertFalse(found_warning, "Lẽ ra không được cảnh báo khi dut_bo là char!")
+        found_warning = any("Tính làm cha thiên hạ hay gì?" in w for w in res.warnings)
+        self.assertFalse(found_warning, "Lẽ ra không được cảnh báo khi cha là char!")
 
     def test_syntax_error_missing_main(self):
         """Báo lỗi hài khi thiếu hàm tran_dau (main)"""
         code = """
-        manh cong(manh a, manh b) {
+        nguyen_con cong(nguyen_con a, nguyen_con b) {
             tra_ve_haha a + b;
         }
         """
@@ -166,7 +166,7 @@ class TestMPlusPlus(unittest.TestCase):
     def test_syntax_error_unclosed_brace(self):
         """Báo lỗi hài khi mở ngoặc nhọn mà không đóng"""
         code = """
-        manh tran_dau() {
+        nguyen_con tran_dau() {
             hihi << 1;
         """
         res = self.transpiler.transpile(code)

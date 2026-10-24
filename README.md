@@ -53,11 +53,11 @@
 
 | Tính Năng | Mô Tả Chi Tiết |
 |---|---|
-| **🛡️ Tokenizer Chuẩn AST** | Không dùng regex replace chuỗi thô. Thoải mái viết `chuoi_hihi s = "manh dan dut_bo hihi nhe;";` mà không lo bị thay đổi nội dung bên trong chuỗi. |
+| **🛡️ Tokenizer Chuẩn AST** | Không dùng regex replace chuỗi thô. Thoải mái viết `chuoi_hihi s = "nguyen_con troi_noi cha hihi nhe;";` mà không lo bị thay đổi nội dung bên trong chuỗi. |
 | **💬 Comment `ke_chuyen:`** | Hỗ trợ thêm cú pháp comment dòng mới: `ke_chuyen: ...` bên cạnh comment truyền thống `//` và `/* */`. |
 | **🤙 Đuôi Câu Linh Hoạt** | Dấu chấm phẩy `;` chuẩn C++ vẫn hoạt động, đồng thời hỗ trợ thêm đuôi câu `nhe;` và `ha;`. |
 | **🐔 Kiểm Tra Luồng Xuất** | Hệ thống sẽ đưa ra thông báo nhắc nhở nếu chương trình hoàn toàn không có lệnh xuất dữ liệu `hihi` (`cout`). |
-| **🥊 Chẩn Đoán Kiểu Biến** | Khai báo biến `dut_bo` với kiểu dữ liệu khác `char` sẽ nhận thông báo chẩn đoán từ hệ thống. |
+| **🥊 Chẩn Đoán Kiểu Biến** | Khai báo biến `cha` với kiểu dữ liệu khác `char` sẽ nhận thông báo chẩn đoán từ hệ thống. |
 | **🤣 Chế Độ Thư Giãn (`--cuoi`)** | Sau khi chương trình kết thúc, hỗ trợ in một câu đùa lập trình viên giúp thư giãn khi làm việc. |
 | **⚠️ Chẩn Đoán Thân Thiện** | Lỗi thiếu chấm phẩy, quên đóng ngoặc hay biến chưa khai báo được diễn giải rõ ràng, dễ hiểu. |
 
@@ -81,7 +81,7 @@ int main() {
 keu_ban <iostream>
 xai_chung;
 
-manh tran_dau() {
+nguyen_con tran_dau() {
     hihi << "Xin chao the gioi!" << xuongdong nhe;
     tra_ve_haha 0 ha;
 }
@@ -96,10 +96,10 @@ Toàn bộ từ khóa được định nghĩa trong file cấu hình độc lậ
 ### 1. Kiểu dữ liệu & Từ khóa cơ bản
 | C++ | M++ | Ý nghĩa / Cách dùng |
 |---|---|---|
-| `int` | `manh` | Số nguyên (Integer) |
-| `float` | `dan` | Số thực (Float) |
-| `double` | `manhnguyen` | Số thực chính xác kép (Double) |
-| `char` | `dut_bo` | Kiểu ký tự (Character) |
+| `int` | `nguyen_con` / `nguyen_xi` | Số nguyên con (Integer) |
+| `float` | `troi_noi` / `le_te` | Số trôi nổi (Floating point) |
+| `double` | `gap_doi` | Số thực gấp đôi (Double precision) |
+| `char` | `cha` | Ký tự (Character) |
 | `string` | `chuoi_hihi` | Chuỗi ký tự (String) |
 | `bool` | `dungsai` | Kiểu logic đúng/sai (Boolean) |
 | `void` | `trongtron` | Hàm không trả về giá trị (Void) |
@@ -222,7 +222,7 @@ Thư mục [`vi_du/`](vi_du/) chứa 7 chương trình mẫu từ cơ bản đ�
 | [`04_so_nguyen_to.m++`](vi_du/04_so_nguyen_to.m++) | Sàng lọc số nguyên tố | `can_bac_hai_ne`, `dungsai`, `chuan`, `bolua`, `thoi` |
 | [`05_sap_xep_mang.m++`](vi_du/05_sap_xep_mang.m++) | Sắp xếp mảng / vector | `hang_dai`, `nhet_vao`, `doi_cho`, `xep_hang`, `bat_dau` |
 | [`06_oop_bang_nhom.m++`](vi_du/06_oop_bang_nhom.m++) | Hướng đối tượng OOP | `bang_nhom`, `cuc_cuc`, `congkhai`, `bimat`, `de_moi`, `xoa_sach` |
-| [`07_test_troll.m++`](vi_du/07_test_troll.m++) | Kiểm tra bảo vệ chuỗi | Biến `dut_bo` kích hoạt cảnh báo, chuỗi giữ nguyên từ khóa |
+| [`07_test_troll.m++`](vi_du/07_test_troll.m++) | Kiểm tra bảo vệ chuỗi | Biến `cha` kích hoạt cảnh báo, chuỗi giữ nguyên từ khóa |
 
 ---
 
@@ -236,10 +236,10 @@ python -m unittest tests/test_mpp.py -v
 
 ```
 test_easter_egg_cam_nhu_hen ... ok
-test_easter_egg_dut_bo_not_char ... ok
+test_easter_egg_cha_not_char ... ok
 test_jokes_generation ... ok
 test_ke_chuyen_comment ... ok
-test_dut_bo_as_char_no_warning ... ok
+test_cha_as_char_no_warning ... ok
 test_run_all_samples ... ok
 test_syntax_endings_nhe_and_ha ... ok
 test_syntax_error_missing_main ... ok

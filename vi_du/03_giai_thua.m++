@@ -2,7 +2,7 @@ keu_ban <iostream>
 xai_chung;
 
 ke_chuyen: Tính giai thừa bằng đệ quy đỉnh cao trí tuệ
-dai_thoong dai_thoong giai_thua_de_quy(manh n) {
+dai_thoong dai_thoong giai_thua_de_quy(nguyen_con n) {
     neuma (n <= 1) {
         tra_ve_haha 1 nhe;
     } khongthi {
@@ -11,9 +11,9 @@ dai_thoong dai_thoong giai_thua_de_quy(manh n) {
 }
 
 ke_chuyen: Tính giai thừa bằng vòng lặp lapmai (while)
-dai_thoong dai_thoong giai_thua_vong_lap(manh n) {
+dai_thoong dai_thoong giai_thua_vong_lap(nguyen_con n) {
     dai_thoong dai_thoong ket_qua = 1 nhe;
-    manh i = 1 ha;
+    nguyen_con i = 1 ha;
     lapmai (i <= n) {
         ket_qua *= i nhe;
         i++ ha;
@@ -21,14 +21,14 @@ dai_thoong dai_thoong giai_thua_vong_lap(manh n) {
     tra_ve_haha ket_qua nhe;
 }
 
-manh tran_dau() {
+nguyen_con tran_dau() {
     hihi << "--- CHUONG TRINH TINH GIAI THUA M++ ---" << xuongdong nhe;
 
-    manh cac_so[] = {0, 1, 5, 7, 10, 12};
-    manh so_luong = sizeof(cac_so) / sizeof(cac_so[0]) nhe;
+    nguyen_con cac_so[] = {0, 1, 5, 7, 10, 12};
+    nguyen_con so_luong = sizeof(cac_so) / sizeof(cac_so[0]) nhe;
 
-    lapdi (manh idx = 0; idx < so_luong; idx++) {
-        manh x = cac_so[idx] nhe;
+    lapdi (nguyen_con idx = 0; idx < so_luong; idx++) {
+        nguyen_con x = cac_so[idx] nhe;
         dai_thoong dai_thoong kq1 = giai_thua_de_quy(x) nhe;
         dai_thoong dai_thoong kq2 = giai_thua_vong_lap(x) ha;
 
